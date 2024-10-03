@@ -1,3 +1,29 @@
-[gd_scene format=3 uid="uid://dn4gwcr257pq7"]
+[gd_scene load_steps=5 format=3 uid="uid://dn4gwcr257pq7"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_gjl1m"]
+[ext_resource type="PackedScene" uid="uid://cp40cpc6551ks" path="res://player.tscn" id="2_ke40j"]
+[ext_resource type="PackedScene" uid="uid://d4heidc0aln6n" path="res://movement_area.tscn" id="3_y7jgw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aaes3"]
+size = Vector2(384, 64)
 
 [node name="level" type="Node2D"]
+script = ExtResource("1_gjl1m")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 160)
+shape = SubResource("RectangleShape2D_aaes3")
+
+[node name="Player" parent="." instance=ExtResource("2_ke40j")]
+position = Vector2(-160, 40)
+
+[node name="movementArea" parent="." instance=ExtResource("3_y7jgw")]
+position = Vector2(8, 64)
+scale = Vector2(1, 8)
+mode = false
+
+[node name="movementArea2" parent="." instance=ExtResource("3_y7jgw")]
+position = Vector2(-8, 64)
+scale = Vector2(1, 7.93349)
