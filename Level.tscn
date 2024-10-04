@@ -25,5 +25,5 @@ scale = Vector2(1, 8)
 mode = false
 
 [node name="movementArea2" parent="." instance=ExtResource("3_y7jgw")]
-position = Vector2(-8, 64)
-scale = Vector2(1, 7.93349)
+position = Vector2(-8, 32)
+scale = Vector2(1, 12)
