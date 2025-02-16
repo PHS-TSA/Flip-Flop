@@ -108,13 +108,17 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	wasdOrArrows = false
 	await get_tree().create_timer(0.1).timeout
+	%WASDlabel.text = "ARWS"
 	pause = true
 	await pressed #wait for key press on movement player
 	pause = false
 	
+	
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	wasdOrArrows = true
 	await get_tree().create_timer(0.1).timeout
+	%WASDlabel.text = "WASD"
 	pause = true
 	await pressed #wait for key press on movement player
 	pause = false
+	

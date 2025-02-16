@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp40cpc6551ks"]
+[gd_scene load_steps=6 format=3 uid="uid://cp40cpc6551ks"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_vkth7"]
+[ext_resource type="Texture2D" uid="uid://d0kgvs44bbqko" path="res://Textures/Sam_G/Sam.png" id="2_7j51x"]
 [ext_resource type="Texture2D" uid="uid://cvtaaa1ggn7s6" path="res://Textures/icon.svg" id="2_vfl16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s637"]
-size = Vector2(48, 112)
+size = Vector2(48, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wriiq"]
 size = Vector2(16, 16)
@@ -19,19 +20,19 @@ script = ExtResource("1_vkth7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -56)
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 
 [node name="StandingSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-2.38419e-07, -56)
-scale = Vector2(0.375, 0.875)
-texture = ExtResource("2_vfl16")
+position = Vector2(0, -56)
+scale = Vector2(0.125, 0.145833)
+texture = ExtResource("2_7j51x")
 
 [node name="StandingCollison" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 light_mask = 511
 visibility_layer = 511
-position = Vector2(0, -56)
+position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_3s637")
 
 [node name="StandingArea" type="Area2D" parent="."]
@@ -71,6 +72,17 @@ collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DownArea"]
 shape = SubResource("RectangleShape2D_wriiq")
+
+[node name="WASDlabel" type="Label" parent="."]
+unique_name_in_owner = true
+z_index = 99
+z_as_relative = false
+offset_left = -24.0
+offset_top = -116.0
+offset_right = 24.0
+offset_bottom = -93.0
+text = "WASD"
+horizontal_alignment = 1
 
 [connection signal="area_entered" from="StandingArea" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="StandingArea" to="." method="_on_area_2d_area_exited"]
