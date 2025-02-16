@@ -73,4 +73,6 @@ collision_mask = 512
 shape = SubResource("RectangleShape2D_wriiq")
 
 [connection signal="area_entered" from="StandingArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="StandingArea" to="." method="_on_area_2d_area_exited"]
 [connection signal="area_entered" from="DownArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="DownArea" to="." method="_on_area_2d_area_exited"]
