@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cp40cpc6551ks"]
+[gd_scene load_steps=28 format=3 uid="uid://cp40cpc6551ks"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_vkth7"]
 [ext_resource type="Texture2D" uid="uid://d0kgvs44bbqko" path="res://Textures/Sam_G/Sam.png" id="2_7j51x"]
@@ -118,6 +118,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_taph0"]
+font_size = 32
+
 [node name="Player" type="CharacterBody2D"]
 process_mode = 1
 light_mask = 511
@@ -196,10 +199,21 @@ horizontal_alignment = 1
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 z_index = 999
-position = Vector2(-2.38419e-07, -66)
+position = Vector2(0, -68)
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_hrgyk")
-animation = &"wall_jump"
+animation = &"idle"
+
+[node name="Stamina" type="Label" parent="."]
+unique_name_in_owner = true
+z_index = 4096
+offset_left = -128.0
+offset_top = -416.0
+offset_right = 128.0
+offset_bottom = -371.0
+text = "Stamina: 100"
+label_settings = SubResource("LabelSettings_taph0")
+horizontal_alignment = 1
 
 [connection signal="area_entered" from="StandingArea" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="StandingArea" to="." method="_on_area_2d_area_exited"]

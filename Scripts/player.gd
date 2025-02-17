@@ -2,6 +2,7 @@ extends CharacterBody2D
 signal pressed
 
 @export var speed = 300.0
+@export var level = ""
 const JUMP_VELOCITY = -600.0
 
 var wasdOrArrows = true #true = wasd false = arrows
@@ -10,6 +11,8 @@ var grabbing = false
 var walljump = false
 var jumping = false
 var walking = false
+var stamina = 100
+var secretstamina = 100
 
 func _ready() -> void:
 	%Sprite.set_autoplay("idle")
@@ -40,6 +43,7 @@ func _physics_process(delta: float) -> void:
 			if is_on_wall() and Input.is_action_pressed("wasdgrab"):
 				if grabbing == false:
 					%Sprite.play("wall_grab")
+				secretstamina -= 0.1
 				grabbing = true
 				jumping = false
 			else:
@@ -92,6 +96,7 @@ func _physics_process(delta: float) -> void:
 			if is_on_wall() and Input.is_action_pressed("arrowsgrab"):
 				if grabbing == false:
 					%Sprite.play("wall_grab")
+				secretstamina -= 0.1
 				grabbing = true
 				jumping = false
 			else:
@@ -136,8 +141,10 @@ func _physics_process(delta: float) -> void:
 			elif not walljump:
 				velocity.x = move_toward(velocity.x, 0, speed/3)
 				walking = false
-			
-				
+		stamina = roundi(secretstamina)
+		%Stamina.text = "Stamina: " + str(stamina)
+		if stamina <= 0:
+			get_tree().change_scene_to_file.call_deferred(level)
 		move_and_slide()
 		
 func _on_area_2d_area_entered(area: Area2D) -> void:

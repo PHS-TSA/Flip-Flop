@@ -11,7 +11,7 @@
 size = Vector2(520, 47.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mfwc"]
-size = Vector2(517, 20)
+size = Vector2(518, 19)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ev0v"]
 texture = ExtResource("5_5ntj7")
@@ -83,6 +83,7 @@ script = ExtResource("1_gjl1m")
 
 [node name="Player" parent="." instance=ExtResource("2_ke40j")]
 position = Vector2(-133, 128)
+level = "res://Level.tscn"
 
 [node name="movementArea" parent="." instance=ExtResource("3_y7jgw")]
 position = Vector2(392, -64)
@@ -93,7 +94,7 @@ position = Vector2(248, -32.625)
 shape = SubResource("RectangleShape2D_b34pt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="movementArea"]
-position = Vector2(251.5, 0)
+position = Vector2(251, 0.5)
 shape = SubResource("RectangleShape2D_7mfwc")
 
 [node name="TileMap" parent="." instance=ExtResource("4_7fvgl")]
