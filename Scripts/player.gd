@@ -8,7 +8,11 @@ var wasdOrArrows = true #true = wasd false = arrows
 var pause = false
 var grabbing = false
 var walljump = false
-var crouching
+var jumping = false
+var walking = false
+
+func _ready() -> void:
+	%Sprite.set_autoplay("idle")
 
 func _input(event):
 	if wasdOrArrows:
@@ -25,83 +29,114 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor() and grabbing and not pause :
 		velocity += get_gravity() * delta/2
 		
-	#if crouching:
-		#%StandingSprite.visible = false
-		#%StandingCollison.disabled = true
-		#%StandingArea.monitoring = false
-		#%StandingArea.monitorable = false
-		#
-		#%DownSprite.visible = true
-		#%DownCollison.disabled = false
-		#%DownArea.monitoring = true
-		#%DownArea.monitorable = true
-	#else:
-		#%StandingSprite.visible = true
-		#%StandingCollison.disabled = false
-		#%StandingArea.monitoring = true
-		#%StandingArea.monitorable = true
-		#
-		#%DownSprite.visible = false
-		#%DownCollison.disabled = true
-		#%DownArea.monitoring = false
-		#%DownArea.monitorable = false
-		
 	if not pause:
 		if wasdOrArrows:
+			if is_on_floor() and not grabbing:
+				jumping = false
+				
+			if is_on_floor() and not is_on_wall() and not walking and not jumping and not grabbing:
+				%Sprite.play("idle")
+				
+			if is_on_wall() and Input.is_action_pressed("wasdgrab"):
+				if grabbing == false:
+					%Sprite.play("wall_grab")
+				grabbing = true
+				jumping = false
+			else:
+				grabbing = false
+				
 			if Input.is_action_just_pressed("w") and (is_on_floor() or grabbing):
 				velocity.y = JUMP_VELOCITY
+				if not grabbing:
+					%Sprite.play("jump")
+					jumping = true
+					
 				if grabbing:
+					if jumping == false:
+						%Sprite.play("wall_jump")
 					var direction := Input.get_axis("a", "d")
 					walljump = true
 					velocity.x = -direction * (speed)
+					if direction > 0:
+						%Sprite.flip_h = true
+					elif direction < 0:
+						%Sprite.flip_h = false
 					await get_tree().create_timer(0.3).timeout
+					jumping = true
 					walljump = false
-	
+				
 			var direction := Input.get_axis("a", "d")
-			if direction and not walljump:
+			if not walljump:
+				if direction < 0:
+					%Sprite.flip_h = true
+				elif direction > 0:
+					%Sprite.flip_h = false
+
+			if direction and not(walljump):
 				velocity.x = direction * speed
+				if not jumping and not grabbing:
+					%Sprite.play("walk")
+				walking = true
 			elif not walljump:
 				velocity.x = move_toward(velocity.x, 0, speed/3)
+				walking = false
+				
+		else: #arrows
 			
-			if is_on_wall() and Input.is_action_pressed("wasdgrab"):
+			if is_on_floor() and not grabbing:
+				jumping = false
+				
+			if is_on_floor() and not is_on_wall() and not walking and not jumping and not grabbing:
+				%Sprite.play("idle")
+				
+			if is_on_wall() and Input.is_action_pressed("arrowsgrab"):
+				if grabbing == false:
+					%Sprite.play("wall_grab")
 				grabbing = true
+				jumping = false
 			else:
 				grabbing = false
-			
-			#if Input.is_action_pressed("down"):
-				#crouching = true
-			#else:
-				#crouching = false
 				
-		else:
 			if Input.is_action_just_pressed("up") and (is_on_floor() or grabbing):
 				velocity.y = JUMP_VELOCITY
+				
+				if not grabbing:
+					%Sprite.play("jump")
+					jumping = true
+					
 				if grabbing:
+					if jumping == false:
+						%Sprite.play("wall_jump")
 					var direction := Input.get_axis("left", "right")
 					walljump = true
 					velocity.x = -direction * (speed)
+					if direction > 0:
+						%Sprite.flip_h = true
+					elif direction < 0:
+						%Sprite.flip_h = false
 					await get_tree().create_timer(0.3).timeout
+					jumping = true
 					walljump = false
 					
 					
 			
 				
 			var direction := Input.get_axis("left", "right")
+			if not walljump:
+				if direction < 0:
+					%Sprite.flip_h = true
+				elif direction > 0:
+					%Sprite.flip_h = false
+
 			if direction and not(walljump):
 				velocity.x = direction * speed
+				if not jumping and not grabbing:
+					%Sprite.play("walk")
+				walking = true
 			elif not walljump:
 				velocity.x = move_toward(velocity.x, 0, speed/3)
-				
-			if is_on_wall() and Input.is_action_pressed("arrowsgrab"):
-				grabbing = true
-			else:
-				grabbing = false
+				walking = false
 			
-			#if Input.is_action_pressed("s"):
-				#crouching = true
-			#else:
-				#crouching = false
-				
 				
 		move_and_slide()
 		

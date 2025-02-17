@@ -195,11 +195,10 @@ horizontal_alignment = 1
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-z_index = 999
 position = Vector2(-2.38419e-07, -66)
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_hrgyk")
-animation = &"wall_jump"
+animation = &"wall_grab"
 
 [connection signal="area_entered" from="StandingArea" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="StandingArea" to="." method="_on_area_2d_area_exited"]
