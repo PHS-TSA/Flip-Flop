@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://da37vswjjlf8g"]
+
+[ext_resource type="Texture2D" uid="uid://j6y81lc1hks7" path="res://Textures/SpringDown.png" id="1_4fsv5"]
+[ext_resource type="Script" path="res://Scripts/spring.gd" id="1_oe6lo"]
+[ext_resource type="Texture2D" uid="uid://lfjq6dbhoacy" path="res://Textures/SpringUP!.png" id="2_frka8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ones1"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugkpk"]
+size = Vector2(129, 128)
+
+[node name="Spring" type="Node2D"]
+script = ExtResource("1_oe6lo")
+
+[node name="pre" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="pre"]
+texture = ExtResource("1_4fsv5")
+
+[node name="Area2D" type="Area2D" parent="pre"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pre/Area2D"]
+shape = SubResource("RectangleShape2D_ones1")
+
+[node name="Up" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Up"]
+texture = ExtResource("2_frka8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Up"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Up/StaticBody2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_ugkpk")
+
+[connection signal="body_entered" from="pre/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="pre/Area2D" to="." method="_on_area_2d_body_exited"]

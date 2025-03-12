@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=4 uid="uid://dn4gwcr257pq7"]
+[gd_scene load_steps=18 format=4 uid="uid://dn4gwcr257pq7"]
 
-[ext_resource type="Script" path="res://Scripts/level.gd" id="1_gjl1m"]
 [ext_resource type="PackedScene" uid="uid://cp40cpc6551ks" path="res://player.tscn" id="2_ke40j"]
 [ext_resource type="PackedScene" uid="uid://d4heidc0aln6n" path="res://movement_area.tscn" id="3_y7jgw"]
 [ext_resource type="PackedScene" uid="uid://c6nqkp4dx722h" path="res://tile_map_layer.tscn" id="4_7fvgl"]
@@ -79,7 +78,6 @@ size = Vector2(1342, 509.5)
 size = Vector2(263, 20)
 
 [node name="level" type="Node2D"]
-script = ExtResource("1_gjl1m")
 
 [node name="Player" parent="." instance=ExtResource("2_ke40j")]
 position = Vector2(-133, 128)
