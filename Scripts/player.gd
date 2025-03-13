@@ -29,10 +29,16 @@ func _input(event):
 		
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor() and not grabbing and not pause and not onladder:
-		velocity += get_gravity() * delta
-	if not is_on_floor() and grabbing and not pause and not onladder:
-		velocity += get_gravity() * delta/2
+	if wasdOrArrows:
+		if not is_on_floor() and not grabbing and not pause and not (onladder and Input.is_action_just_pressed("wasdgrab")):
+			velocity += get_gravity() * delta
+		if not is_on_floor() and grabbing and not pause and not (onladder and Input.is_action_just_pressed("wasdgrab")):
+			velocity += get_gravity() * delta/2
+	else:
+		if not is_on_floor() and not grabbing and not pause and not (onladder and Input.is_action_just_pressed("arrowsgrab")):
+			velocity += get_gravity() * delta
+		if not is_on_floor() and grabbing and not pause and not (onladder and Input.is_action_just_pressed("arrowsgrab")):
+			velocity += get_gravity() * delta/2
 		
 	if not pause:
 		if Input.is_action_pressed("wasdgrab") or Input.is_action_pressed("arrowsgrab"):
@@ -55,7 +61,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				grabbing = false
 				
-			if Input.is_action_just_pressed("w") and (is_on_floor() or grabbing):
+			if Input.is_action_just_pressed("w") and (is_on_floor() or grabbing) and not (onladder and Input.is_action_pressed("wasdgrab")):
 				velocity.y = JUMP_VELOCITY
 				if not grabbing:
 					%Sprite.play("jump")
@@ -91,11 +97,15 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, 0, speed/3)
 				walking = false
 			
-		if onladder:
-			if Input.is_action_pressed("w"):
-				pass
-			elif Input.is_action_pressed("s"):
-				pass
+			if onladder and Input.is_action_pressed("wasdgrab"):
+				secretstamina -= 0.01
+				if Input.is_action_pressed("w"):
+					velocity.y = move_toward(velocity.y, -300, speed/3)
+				elif Input.is_action_pressed("s"):
+					velocity.y = move_toward(velocity.y, 300, speed/3)
+				else:
+					velocity.y = 0
+				
 				
 		else: #arrows
 			
@@ -114,7 +124,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				grabbing = false
 				
-			if Input.is_action_just_pressed("up") and (is_on_floor() or grabbing):
+			if Input.is_action_just_pressed("up") and (is_on_floor() or grabbing) and not (onladder and Input.is_action_pressed("arrowsgrab")):
 				velocity.y = JUMP_VELOCITY
 				
 				if not grabbing:
@@ -135,9 +145,6 @@ func _physics_process(delta: float) -> void:
 					jumping = true
 					walljump = false
 					
-					
-			
-				
 			var direction := Input.get_axis("left", "right")
 			if not walljump:
 				if direction < 0:
@@ -153,6 +160,16 @@ func _physics_process(delta: float) -> void:
 			elif not walljump:
 				velocity.x = move_toward(velocity.x, 0, speed/3)
 				walking = false
+				
+			if onladder and Input.is_action_pressed("arrowsgrab"):
+				secretstamina -= 0.01
+				if Input.is_action_pressed("up"):
+					velocity.y = move_toward(velocity.y, -300, speed/3)
+				elif Input.is_action_pressed("down"):
+					velocity.y = move_toward(velocity.y, 300, speed/3)
+				else:
+					velocity.y = 0
+					
 		stamina = roundi(secretstamina)
 		%Stamina.text = "Stamina: " + str(stamina)
 		if stamina <= 0:
