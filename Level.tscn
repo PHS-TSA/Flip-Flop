@@ -195,7 +195,7 @@ position = Vector2(-133, 128)
 
 [node name="teleport" type="Area2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(399, -2832)
+position = Vector2(398, -2832)
 script = ExtResource("6_2i2fx")
 level = "res://Level2.tscn"
 

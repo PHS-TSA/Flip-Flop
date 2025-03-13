@@ -14,6 +14,8 @@ var walking = false
 var stamina = 100
 var secretstamina = 100
 
+var onladder = false
+
 func _ready() -> void:
 	%Sprite.set_autoplay("idle")
 
@@ -27,10 +29,14 @@ func _input(event):
 		
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor() and not grabbing and not pause :
+	if not is_on_floor() and not grabbing and not pause and not onladder:
 		velocity += get_gravity() * delta
-	if not is_on_floor() and grabbing and not pause :
+	if not is_on_floor() and grabbing and not pause and not onladder:
 		velocity += get_gravity() * delta/2
+		
+	if not pause:
+		if Input.is_action_pressed("wasdgrab") or Input.is_action_pressed("arrowsgrab"):
+			secretstamina -= 0.01
 		
 	if not pause:
 		if wasdOrArrows:
@@ -84,6 +90,12 @@ func _physics_process(delta: float) -> void:
 			elif not walljump:
 				velocity.x = move_toward(velocity.x, 0, speed/3)
 				walking = false
+			
+		if onladder:
+			if Input.is_action_pressed("w"):
+				pass
+			elif Input.is_action_pressed("s"):
+				pass
 				
 		else: #arrows
 			
@@ -164,3 +176,13 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 	await pressed #wait for key press on movement player
 	pause = false
 	
+
+
+func _on_ladder_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		onladder = true
+
+
+func _on_ladder_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		onladder = false
