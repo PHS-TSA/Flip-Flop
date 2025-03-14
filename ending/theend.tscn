@@ -1,0 +1,175 @@
+[gd_scene load_steps=10 format=3 uid="uid://fl3exisrhitj"]
+
+[ext_resource type="Texture2D" uid="uid://cimwukqriw66t" path="res://ending/bleg (1).png" id="1_cp0sh"]
+[ext_resource type="Texture2D" uid="uid://e3doymdlj15s" path="res://ending/ezgif-7cebf3f0a1cd15.webp" id="2_wcthk"]
+[ext_resource type="Texture2D" uid="uid://8s1qdgdp4sqy" path="res://ending/ezgif-7934369ef78719.webp" id="3_0vif0"]
+[ext_resource type="Texture2D" uid="uid://sc4reo03ke1y" path="res://ending/7f6ea4f5934c620cd695fdf6280c2f5d.jpg" id="4_rs1wt"]
+[ext_resource type="Texture2D" uid="uid://dfropk3oa05a4" path="res://ending/IMG_6180.webp" id="5_qym0o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ht70"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_fng4n"]
+font_size = 40
+font_color = Color(0.94986, 0.256564, 0.908125, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bgi37"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_refq8"]
+font_size = 40
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 32.0
+offset_right = 1706.0
+offset_bottom = 309.0
+text = "THE END
+NOW LEAVE SCAMP"
+label_settings = SubResource("LabelSettings_0ht70")
+horizontal_alignment = 1
+
+[node name="Bleg(1)" type="Sprite2D" parent="."]
+position = Vector2(370, 805)
+texture = ExtResource("1_cp0sh")
+flip_h = true
+
+[node name="Ezgif-7Cebf3f0a1Cd15" type="Sprite2D" parent="."]
+position = Vector2(1230, 795)
+texture = ExtResource("2_wcthk")
+
+[node name="Ezgif-7934369Ef78719" type="Sprite2D" parent="."]
+position = Vector2(934, 881)
+texture = ExtResource("3_0vif0")
+flip_h = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.625
+anchor_bottom = 0.435
+offset_left = 1014.0
+offset_top = 666.0
+offset_right = -140.0
+offset_bottom = 251.2
+rotation = -1.49868
+text = "<3"
+label_settings = SubResource("LabelSettings_fng4n")
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.625
+anchor_bottom = 0.435
+offset_left = 1264.0
+offset_top = 732.0
+offset_right = 110.0
+offset_bottom = 317.2
+rotation = -1.49868
+text = "<3"
+label_settings = SubResource("LabelSettings_fng4n")
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.625
+anchor_bottom = 0.435
+offset_left = 1051.0
+offset_top = 845.0
+offset_right = -103.0
+offset_bottom = 430.2
+rotation = -1.49868
+text = "<3"
+label_settings = SubResource("LabelSettings_fng4n")
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.625
+anchor_bottom = 0.435
+offset_left = 1056.0
+offset_top = 952.0
+offset_right = -98.0
+offset_bottom = 537.2
+rotation = -1.49868
+text = "<3"
+label_settings = SubResource("LabelSettings_fng4n")
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.625
+anchor_bottom = 0.435
+offset_left = 869.0
+offset_top = 845.0
+offset_right = -285.0
+offset_bottom = 430.2
+rotation = -1.49868
+text = "<3"
+label_settings = SubResource("LabelSettings_fng4n")
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.625
+anchor_bottom = 0.435
+offset_left = 1169.0
+offset_top = 983.0
+offset_right = 15.0
+offset_bottom = 568.2
+rotation = -1.49868
+text = "<3"
+label_settings = SubResource("LabelSettings_fng4n")
+
+[node name="Label8" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.625
+anchor_bottom = 0.435
+offset_left = 790.0
+offset_top = 816.0
+offset_right = -364.0
+offset_bottom = 401.2
+rotation = -1.49868
+text = "<3"
+label_settings = SubResource("LabelSettings_fng4n")
+
+[node name="7f6Ea4f5934c620Cd695Fdf6280c2f5d" type="Sprite2D" parent="."]
+position = Vector2(1745, 949.75)
+scale = Vector2(0.630682, 0.292598)
+texture = ExtResource("4_rs1wt")
+
+[node name="Img6180" type="Sprite2D" parent="."]
+position = Vector2(1312, 565.75)
+scale = Vector2(1.06759, 0.163562)
+texture = ExtResource("5_qym0o")
+
+[node name="Label9" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.548
+anchor_bottom = 0.898
+offset_left = 764.0
+offset_top = 1027.0
+offset_right = 415.84
+offset_bottom = 99.1599
+text = "Alexander Willingham the 3rd or 4th i dont know"
+label_settings = SubResource("LabelSettings_bgi37")
+
+[node name="Label10" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1252.0
+offset_top = 398.0
+offset_right = 1711.0
+offset_bottom = 453.0
+text = "Keith MArcel Willams Jr."
+label_settings = SubResource("LabelSettings_refq8")
