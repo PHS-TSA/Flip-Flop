@@ -12,7 +12,7 @@ size = Vector2(520, 47.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mfwc"]
 size = Vector2(518, 19)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ev0v"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ayy2g"]
 texture = ExtResource("5_5ntj7")
 margins = Vector2i(1, 1)
 separation = Vector2i(2, 0)
@@ -39,9 +39,9 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_b1ss6"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 255
-sources/1 = SubResource("TileSetAtlasSource_6ev0v")
+sources/1 = SubResource("TileSetAtlasSource_ayy2g")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_biisx"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp6yh"]
 texture = ExtResource("5_5ntj7")
 margins = Vector2i(1, 1)
 separation = Vector2i(2, 0)
@@ -58,7 +58,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_q4bq1"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_biisx")
+sources/1 = SubResource("TileSetAtlasSource_wp6yh")
 
 [sub_resource type="LabelSettings" id="LabelSettings_r7wmj"]
 font_size = 24
