@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://da37vswjjlf8g"]
 
 [ext_resource type="Texture2D" uid="uid://j6y81lc1hks7" path="res://Textures/SpringDown.png" id="1_4fsv5"]
-[ext_resource type="Script" path="res://Scripts/spring.gd" id="1_oe6lo"]
+[ext_resource type="Script" uid="uid://csgo35nvxnh0g" path="res://Scripts/spring.gd" id="1_oe6lo"]
 [ext_resource type="Texture2D" uid="uid://lfjq6dbhoacy" path="res://Textures/SpringUP!.png" id="2_frka8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ones1"]

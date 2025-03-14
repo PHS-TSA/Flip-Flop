@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Flip-Flop"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+run/main_scene="uid://pdi1wk61dj5u"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://Textures/icon.svg"
 
 [autoload]

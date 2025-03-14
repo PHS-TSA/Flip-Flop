@@ -203,3 +203,9 @@ func _on_ladder_body_entered(body: Node2D) -> void:
 func _on_ladder_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		onladder = false
+
+
+func _on_pillows_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		await get_tree().create_timer(0.1).timeout
+		get_tree().change_scene_to_file.call_deferred(level)
