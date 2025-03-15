@@ -1,28 +1,43 @@
-[gd_scene load_steps=28 format=3 uid="uid://cp40cpc6551ks"]
+[gd_scene load_steps=43 format=3 uid="uid://cp40cpc6551ks"]
 
 [ext_resource type="Script" uid="uid://m6tgq13drqbb" path="res://Scripts/player.gd" id="1_vkth7"]
 [ext_resource type="Texture2D" uid="uid://d0kgvs44bbqko" path="res://Textures/Sam_G/Sam.png" id="2_7j51x"]
 [ext_resource type="Texture2D" uid="uid://cvtaaa1ggn7s6" path="res://Textures/icon.svg" id="2_vfl16"]
-[ext_resource type="Texture2D" uid="uid://cf82o18kq01rl" path="res://Textures/Bunny/idle/FIdle1.png" id="4_b0idd"]
-[ext_resource type="Texture2D" uid="uid://dfbo3u1yppl5g" path="res://Textures/Bunny/idle/FIdle2.png" id="5_05d2m"]
-[ext_resource type="Texture2D" uid="uid://cgnt6i33d057m" path="res://Textures/Bunny/idle/FIdle3.png" id="6_3054x"]
-[ext_resource type="Texture2D" uid="uid://ft4wbscqynvl" path="res://Textures/Bunny/idle/FIdle4.png" id="7_gx6if"]
-[ext_resource type="Texture2D" uid="uid://c62jpqee57ioa" path="res://Textures/Bunny/jump/FJump1.png" id="8_bk84p"]
-[ext_resource type="Texture2D" uid="uid://b802or66jpaov" path="res://Textures/Bunny/jump/FJump2.png" id="9_c67sc"]
-[ext_resource type="Texture2D" uid="uid://bcwv7jkgrva7k" path="res://Textures/Bunny/jump/FJump3.png" id="10_libey"]
-[ext_resource type="Texture2D" uid="uid://cfy0ypnpg1dwk" path="res://Textures/Bunny/jump/FJump4.png" id="11_c6umt"]
-[ext_resource type="Texture2D" uid="uid://b7mqoyxvinqyc" path="res://Textures/Bunny/jump/FJump5.png" id="12_bstyr"]
-[ext_resource type="Texture2D" uid="uid://clnxj03w1esq7" path="res://Textures/Bunny/walk/FWalk1.png" id="13_75qip"]
-[ext_resource type="Texture2D" uid="uid://cesol6vu7uret" path="res://Textures/Bunny/walk/FWalk2.png" id="14_unryy"]
-[ext_resource type="Texture2D" uid="uid://c84elxh0ff3lp" path="res://Textures/Bunny/walk/FWalk3.png" id="15_is603"]
-[ext_resource type="Texture2D" uid="uid://bccs5g8rgc5tt" path="res://Textures/Bunny/wallgrab/FWallGrab1.png" id="16_d3d4l"]
-[ext_resource type="Texture2D" uid="uid://dvjt100axdde3" path="res://Textures/Bunny/wallgrab/FWallGrab2.png" id="17_svjgd"]
-[ext_resource type="Texture2D" uid="uid://cwsiag4i6cyym" path="res://Textures/Bunny/wallgrab/FWallGrab3.png" id="18_6gw0d"]
-[ext_resource type="Texture2D" uid="uid://dmsaydmgm8tfv" path="res://Textures/Bunny/walljump/FWallJump1.png" id="19_0x757"]
-[ext_resource type="Texture2D" uid="uid://cg60p884attet" path="res://Textures/Bunny/walljump/FWallJump2.png" id="20_0uel0"]
-[ext_resource type="Texture2D" uid="uid://dmpx6w5spumyd" path="res://Textures/Bunny/walljump/FWallJump3.png" id="21_ysu3y"]
-[ext_resource type="Texture2D" uid="uid://x3educ8taot3" path="res://Textures/Bunny/walljump/FWallJump4.png" id="22_0ox3m"]
-[ext_resource type="Texture2D" uid="uid://y6qcw4k5lnug" path="res://Textures/Bunny/walljump/FWallJump5.png" id="23_0xils"]
+[ext_resource type="Texture2D" uid="uid://cf82o18kq01rl" path="res://Textures/Sam/idle/FIdle1.png" id="4_b0idd"]
+[ext_resource type="Texture2D" uid="uid://cst7d3wjqywu6" path="res://Textures/Sam/Climbing/FloppyClimb1.png" id="4_b88wv"]
+[ext_resource type="Texture2D" uid="uid://dfbo3u1yppl5g" path="res://Textures/Sam/idle/FIdle2.png" id="5_05d2m"]
+[ext_resource type="Texture2D" uid="uid://6ds4icrirqyy" path="res://Textures/Sam/Climbing/FloppyClimb2.png" id="5_pgbbb"]
+[ext_resource type="Texture2D" uid="uid://m5f7kjwbqm2k" path="res://Textures/Sam/Climbing/FloppyClimb3.png" id="6_331ug"]
+[ext_resource type="Texture2D" uid="uid://cgnt6i33d057m" path="res://Textures/Sam/idle/FIdle3.png" id="6_3054x"]
+[ext_resource type="Texture2D" uid="uid://ft4wbscqynvl" path="res://Textures/Sam/idle/FIdle4.png" id="7_gx6if"]
+[ext_resource type="Texture2D" uid="uid://dnxgls0moj3mw" path="res://Textures/Sam/Climbing/FloppyClimb4.png" id="7_ny14h"]
+[ext_resource type="Texture2D" uid="uid://c62jpqee57ioa" path="res://Textures/Sam/jump/FJump1.png" id="8_bk84p"]
+[ext_resource type="Texture2D" uid="uid://b802or66jpaov" path="res://Textures/Sam/jump/FJump2.png" id="9_c67sc"]
+[ext_resource type="Texture2D" uid="uid://bcwv7jkgrva7k" path="res://Textures/Sam/jump/FJump3.png" id="10_libey"]
+[ext_resource type="Texture2D" uid="uid://cfy0ypnpg1dwk" path="res://Textures/Sam/jump/FJump4.png" id="11_c6umt"]
+[ext_resource type="Texture2D" uid="uid://b7mqoyxvinqyc" path="res://Textures/Sam/jump/FJump5.png" id="12_bstyr"]
+[ext_resource type="Texture2D" uid="uid://clnxj03w1esq7" path="res://Textures/Sam/walk/FWalk1.png" id="13_75qip"]
+[ext_resource type="Texture2D" uid="uid://cesol6vu7uret" path="res://Textures/Sam/walk/FWalk2.png" id="14_unryy"]
+[ext_resource type="Texture2D" uid="uid://c84elxh0ff3lp" path="res://Textures/Sam/walk/FWalk3.png" id="15_is603"]
+[ext_resource type="Texture2D" uid="uid://bccs5g8rgc5tt" path="res://Textures/Sam/wallgrab/FWallGrab1.png" id="16_d3d4l"]
+[ext_resource type="Texture2D" uid="uid://dpx7p1oagb2du" path="res://Textures/Sam/FloppySleep/FloppySleep1.png" id="17_ibah8"]
+[ext_resource type="Texture2D" uid="uid://dvjt100axdde3" path="res://Textures/Sam/wallgrab/FWallGrab2.png" id="17_svjgd"]
+[ext_resource type="Texture2D" uid="uid://c6mhdrgw3hip3" path="res://Textures/Sam/FloppySleep/FloppySleep2.png" id="18_3iwfv"]
+[ext_resource type="Texture2D" uid="uid://cwsiag4i6cyym" path="res://Textures/Sam/wallgrab/FWallGrab3.png" id="18_6gw0d"]
+[ext_resource type="Texture2D" uid="uid://dmsaydmgm8tfv" path="res://Textures/Sam/walljump/FWallJump1.png" id="19_0x757"]
+[ext_resource type="Texture2D" uid="uid://coal6ldokeshr" path="res://Textures/Sam/FloppySleep/FloppySleep3.png" id="19_qwsg1"]
+[ext_resource type="Texture2D" uid="uid://cg60p884attet" path="res://Textures/Sam/walljump/FWallJump2.png" id="20_0uel0"]
+[ext_resource type="Texture2D" uid="uid://c4sawkuijqdyv" path="res://Textures/Sam/FloppySleep/FloppySleep4.png" id="20_1xqrm"]
+[ext_resource type="Texture2D" uid="uid://baq4q3vqbmfuo" path="res://Textures/Sam/FloppySleep/FloppySleep5.png" id="21_bfour"]
+[ext_resource type="Texture2D" uid="uid://dmpx6w5spumyd" path="res://Textures/Sam/walljump/FWallJump3.png" id="21_ysu3y"]
+[ext_resource type="Texture2D" uid="uid://x3educ8taot3" path="res://Textures/Sam/walljump/FWallJump4.png" id="22_0ox3m"]
+[ext_resource type="Texture2D" uid="uid://chxesd21r3i1f" path="res://Textures/Sam/FloppySleep/FloppySleep6.png" id="22_8gr2b"]
+[ext_resource type="Texture2D" uid="uid://y6qcw4k5lnug" path="res://Textures/Sam/walljump/FWallJump5.png" id="23_0xils"]
+[ext_resource type="Texture2D" uid="uid://dycs2riwby4pa" path="res://Textures/Sam/FloppySleep/FloppySleep7.png" id="23_vl8ci"]
+[ext_resource type="Texture2D" uid="uid://c3c4waolayn8m" path="res://Textures/Sam/FloppySleep/FloppySleep8.png" id="24_ieltc"]
+[ext_resource type="Texture2D" uid="uid://ccron88pf221p" path="res://Textures/Sam/FloppySleep/FloppySleep9.png" id="25_fddr8"]
+[ext_resource type="Texture2D" uid="uid://kakfgnai68j7" path="res://Textures/Sam/FloppySleep/FloppySleep10.png" id="26_oybyf"]
+[ext_resource type="Texture2D" uid="uid://j63pf2ym84sh" path="res://Textures/Sam/FloppySleep/FloppySleep11.png" id="27_ajfva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s637"]
 size = Vector2(48, 96)
@@ -32,6 +47,31 @@ size = Vector2(16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hrgyk"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_b88wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pgbbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_331ug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ny14h")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_bstyr")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_b0idd")
@@ -67,6 +107,44 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_ibah8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3iwfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_qwsg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_1xqrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_bfour")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_8gr2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_vl8ci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ieltc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_fddr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_oybyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ajfva")
+}],
+"loop": true,
+"name": &"sleep",
 "speed": 5.0
 }, {
 "frames": [{
@@ -202,7 +280,7 @@ z_index = 999
 position = Vector2(0, -68)
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_hrgyk")
-animation = &"idle"
+animation = &"fall"
 
 [node name="Stamina" type="Label" parent="."]
 unique_name_in_owner = true

@@ -13,6 +13,7 @@ var jumping = false
 var walking = false
 var stamina = 100
 var secretstamina = 100
+var pausedclimb = true
 
 var onladder = false
 
@@ -52,7 +53,7 @@ func _physics_process(delta: float) -> void:
 			if is_on_floor() and not is_on_wall() and not walking and not jumping and not grabbing:
 				%Sprite.play("idle")
 				
-			if is_on_wall() and Input.is_action_pressed("wasdgrab"):
+			if is_on_wall() and Input.is_action_pressed("wasdgrab") and not onladder:
 				if grabbing == false:
 					%Sprite.play("wall_grab")
 				secretstamina -= 0.1
@@ -90,7 +91,7 @@ func _physics_process(delta: float) -> void:
 
 			if direction and not(walljump):
 				velocity.x = direction * speed
-				if not jumping and not grabbing:
+				if not jumping and not grabbing and not onladder:
 					%Sprite.play("walk")
 				walking = true
 			elif not walljump:
@@ -100,11 +101,24 @@ func _physics_process(delta: float) -> void:
 			if onladder and Input.is_action_pressed("wasdgrab"):
 				secretstamina -= 0.01
 				if Input.is_action_pressed("w"):
+					if pausedclimb:
+						%Sprite.play("climb")
+						pausedclimb = false
 					velocity.y = move_toward(velocity.y, -300, speed/3)
 				elif Input.is_action_pressed("s"):
+					if pausedclimb:
+						%Sprite.play("climb")
+						pausedclimb = false
 					velocity.y = move_toward(velocity.y, 300, speed/3)
+				elif Input.is_action_pressed("a") or Input.is_action_pressed("d"):
+					if pausedclimb:
+						%Sprite.play("climb")
+						pausedclimb = false
+					velocity.y = 0
 				else:
 					velocity.y = 0
+					%Sprite.pause()
+					pausedclimb = true
 				
 				
 		else: #arrows
@@ -115,7 +129,7 @@ func _physics_process(delta: float) -> void:
 			if is_on_floor() and not is_on_wall() and not walking and not jumping and not grabbing:
 				%Sprite.play("idle")
 				
-			if is_on_wall() and Input.is_action_pressed("arrowsgrab"):
+			if is_on_wall() and Input.is_action_pressed("arrowsgrab") and not onladder:
 				if grabbing == false:
 					%Sprite.play("wall_grab")
 				secretstamina -= 0.1
@@ -154,7 +168,7 @@ func _physics_process(delta: float) -> void:
 
 			if direction and not(walljump):
 				velocity.x = direction * speed
-				if not jumping and not grabbing:
+				if not jumping and not grabbing and not onladder:
 					%Sprite.play("walk")
 				walking = true
 			elif not walljump:
@@ -162,14 +176,31 @@ func _physics_process(delta: float) -> void:
 				walking = false
 				
 			if onladder and Input.is_action_pressed("arrowsgrab"):
+				if %Sprite.animation != "climb":
+					%Sprite.play("climb")
 				secretstamina -= 0.01
 				if Input.is_action_pressed("up"):
+					if pausedclimb:
+						%Sprite.play("climb")
+						pausedclimb = false
 					velocity.y = move_toward(velocity.y, -300, speed/3)
 				elif Input.is_action_pressed("down"):
+					if pausedclimb:
+						%Sprite.play("climb")
+						pausedclimb = false
 					velocity.y = move_toward(velocity.y, 300, speed/3)
-				else:
+				elif Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+					if pausedclimb:
+						%Sprite.play("climb")
+						pausedclimb = false
 					velocity.y = 0
-					
+				else:
+					pausedclimb = true
+					%Sprite.pause()
+					velocity.y = 0
+
+		if velocity.y > 0 and not onladder and not grabbing and $Sprite.animation != "wall_jump":
+			%Sprite.play("fall")
 		stamina = roundi(secretstamina)
 		%Stamina.text = "Stamina: " + str(stamina)
 		if stamina <= 0:
@@ -198,6 +229,7 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 func _on_ladder_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		onladder = true
+		
 
 
 func _on_ladder_body_exited(body: Node2D) -> void:
