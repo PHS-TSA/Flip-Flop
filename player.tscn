@@ -133,7 +133,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("24_ieltc")
+}],
+"loop": false,
+"name": &"sleep",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("25_fddr8")
 }, {
@@ -144,7 +149,7 @@ animations = [{
 "texture": ExtResource("27_ajfva")
 }],
 "loop": true,
-"name": &"sleep",
+"name": &"sleeploop",
 "speed": 5.0
 }, {
 "frames": [{
@@ -280,7 +285,7 @@ z_index = 999
 position = Vector2(0, -68)
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_hrgyk")
-animation = &"fall"
+animation = &"sleep"
 
 [node name="Stamina" type="Label" parent="."]
 unique_name_in_owner = true
