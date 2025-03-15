@@ -349,6 +349,7 @@ label_settings = SubResource("LabelSettings_taph0")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
+layout_mode = 0
 offset_left = 72.0
 offset_top = 760.0
 offset_right = 210.0

@@ -314,6 +314,7 @@ disabled = true
 [node name="BIG" type="Label" parent="bg"]
 unique_name_in_owner = true
 z_index = 4096
+layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 258.0
 text = "LEVEL 1: BEGINING"
