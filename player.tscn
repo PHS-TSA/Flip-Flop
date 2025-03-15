@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cp40cpc6551ks"]
+[gd_scene load_steps=44 format=3 uid="uid://cp40cpc6551ks"]
 
 [ext_resource type="Script" uid="uid://m6tgq13drqbb" path="res://Scripts/player.gd" id="1_vkth7"]
 [ext_resource type="Texture2D" uid="uid://d0kgvs44bbqko" path="res://Textures/Sam_G/Sam.png" id="2_7j51x"]
@@ -204,6 +204,9 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_taph0"]
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_b88wv"]
+font_size = 100
+
 [node name="Player" type="CharacterBody2D"]
 process_mode = 1
 light_mask = 511
@@ -211,10 +214,10 @@ visibility_layer = 511
 collision_layer = 511
 collision_mask = 511
 script = ExtResource("1_vkth7")
+leveltxt = "TESTING"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -56)
-zoom = Vector2(1.5, 1.5)
 
 [node name="StandingSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -285,7 +288,7 @@ z_index = 999
 position = Vector2(0, -68)
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_hrgyk")
-animation = &"sleep"
+animation = &"fall"
 
 [node name="Stamina" type="Label" parent="."]
 unique_name_in_owner = true
@@ -297,6 +300,27 @@ offset_bottom = -371.0
 text = "Stamina: 100"
 label_settings = SubResource("LabelSettings_taph0")
 horizontal_alignment = 1
+
+[node name="bg" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 999
+offset_left = -640.0
+offset_top = -374.0
+offset_right = 639.0
+offset_bottom = -115.0
+disabled = true
+
+[node name="BIG" type="Label" parent="bg"]
+unique_name_in_owner = true
+z_index = 4096
+offset_right = 1280.0
+offset_bottom = 258.0
+text = "LEVEL 1: BEGINING"
+label_settings = SubResource("LabelSettings_b88wv")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="area_entered" from="StandingArea" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="StandingArea" to="." method="_on_area_2d_area_exited"]

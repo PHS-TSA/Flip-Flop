@@ -81,6 +81,7 @@ size = Vector2(263, 242)
 [node name="Player" parent="." instance=ExtResource("2_mi3s1")]
 position = Vector2(112, -8)
 level = "res://Level2.tscn"
+leveltxt = "LEVEL 2: Spring Forward"
 
 [node name="Spawn" type="Node2D" parent="."]
 position = Vector2(24, 0)

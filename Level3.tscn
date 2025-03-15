@@ -79,6 +79,7 @@ size = Vector2(131.5, 704.5)
 [node name="Player" parent="." instance=ExtResource("1_d3j5m")]
 position = Vector2(-300, 125)
 level = "res://Level3.tscn"
+leveltxt = "LEVEL 3: Springs and Ladders"
 
 [node name="TileMap" parent="." instance=ExtResource("3_1nlbs")]
 scale = Vector2(4, 4)

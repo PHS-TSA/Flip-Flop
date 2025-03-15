@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=4 uid="uid://dn4gwcr257pq7"]
+[gd_scene load_steps=26 format=4 uid="uid://dn4gwcr257pq7"]
 
+[ext_resource type="Script" uid="uid://bmmxwmt6fv3f6" path="res://Scripts/level.gd" id="1_m3clv"]
 [ext_resource type="PackedScene" uid="uid://cp40cpc6551ks" path="res://player.tscn" id="2_ke40j"]
 [ext_resource type="PackedScene" uid="uid://d4heidc0aln6n" path="res://movement_area.tscn" id="3_y7jgw"]
 [ext_resource type="PackedScene" uid="uid://c6nqkp4dx722h" path="res://tile_map_layer.tscn" id="4_7fvgl"]
@@ -94,11 +95,16 @@ size = Vector2(556, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ywx5"]
 size = Vector2(223, 20)
 
+[sub_resource type="LabelSettings" id="LabelSettings_m3clv"]
+font_size = 32
+
 [node name="level" type="Node2D"]
+script = ExtResource("1_m3clv")
 
 [node name="Player" parent="." instance=ExtResource("2_ke40j")]
 position = Vector2(-133, 128)
 level = "res://Level.tscn"
+leveltxt = "LEVEL 1: BEGINNING"
 
 [node name="movementArea" parent="." instance=ExtResource("3_y7jgw")]
 position = Vector2(392, -64)
@@ -246,6 +252,15 @@ shape = SubResource("RectangleShape2D_86ljf")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="pillows"]
 position = Vector2(388, -1610)
 shape = SubResource("RectangleShape2D_3ywx5")
+
+[node name="Label7" type="Label" parent="."]
+visible = false
+offset_left = 407.0
+offset_top = -311.0
+offset_right = 605.0
+offset_bottom = -266.0
+text = "Shift to grab!"
+label_settings = SubResource("LabelSettings_m3clv")
 
 [connection signal="area_entered" from="teleport" to="teleport" method="_on_area_entered"]
 [connection signal="body_entered" from="teleport" to="teleport" method="_on_body_entered"]

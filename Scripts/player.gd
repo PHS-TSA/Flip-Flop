@@ -4,6 +4,7 @@ signal slept
 
 @export var speed = 300.0
 @export var level = ""
+@export var leveltxt = ""
 const JUMP_VELOCITY = -600.0
 
 var wasdOrArrows = true #true = wasd false = arrows
@@ -21,6 +22,15 @@ var onladder = false
 
 func _ready() -> void:
 	%Sprite.set_autoplay("idle")
+	%BIG.text = leveltxt
+	#%BIG.visible = true
+	%bg.visible = true
+	await get_tree().create_timer(0.1).timeout
+	var tween = get_tree().create_tween()
+	tween.tween_property(%BIG, "modulate", Color(255,255,255,0), 4)
+	tween.parallel().tween_property(%bg, "self_modulate", Color(0,0,0,0), 2.5)
+	tween.tween_callback(%BIG.queue_free)
+
 
 func _input(event):
 	if wasdOrArrows:
@@ -230,21 +240,23 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 			
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	wasdOrArrows = false
-	await get_tree().create_timer(0.1).timeout
-	%WASDlabel.text = "ARWS"
-	pause = true
-	await pressed #wait for key press on movement player
-	pause = false
+	if not Globals.singleplayer:
+		wasdOrArrows = false
+		await get_tree().create_timer(0.1).timeout
+		%WASDlabel.text = "ARWS"
+		pause = true
+		await pressed #wait for key press on movement player
+		pause = false
 	
 	
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	wasdOrArrows = true
-	await get_tree().create_timer(0.1).timeout
-	%WASDlabel.text = "WASD"
-	pause = true
-	await pressed #wait for key press on movement player
-	pause = false
+	if not Globals.singleplayer:
+		wasdOrArrows = true
+		await get_tree().create_timer(0.1).timeout
+		%WASDlabel.text = "WASD"
+		pause = true
+		await pressed #wait for key press on movement player
+		pause = false
 	
 
 

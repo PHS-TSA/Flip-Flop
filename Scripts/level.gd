@@ -3,7 +3,19 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if Globals.singleplayer:
+		get_node("Label2").visible = false
+		get_node("Label3").visible = false
+		get_node("Label4").visible = false
+		get_node("Label5").visible = false
+		get_node("Label7").visible = true
+	else:
+		get_node("Label2").visible = true
+		get_node("Label3").visible = true
+		get_node("Label4").visible = true
+		get_node("Label5").visible = true
+		get_node("Label7").visible = false
+		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
