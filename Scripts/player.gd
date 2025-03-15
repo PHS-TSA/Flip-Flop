@@ -105,6 +105,8 @@ func _physics_process(delta: float) -> void:
 					walking = false
 				
 				if onladder and Input.is_action_pressed("wasdgrab"):
+					if %Sprite.animation != "climb":
+						%Sprite.play("climb")
 					secretstamina -= 0.01
 					if Input.is_action_pressed("w"):
 						if pausedclimb:
@@ -122,9 +124,9 @@ func _physics_process(delta: float) -> void:
 							pausedclimb = false
 						velocity.y = 0
 					else:
-						velocity.y = 0
-						%Sprite.pause()
 						pausedclimb = true
+						%Sprite.pause()
+						velocity.y = 0
 					
 					
 			else: #arrows
