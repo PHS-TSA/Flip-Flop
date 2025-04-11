@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=4 uid="uid://dvs6qoprore6b"]
+
+[ext_resource type="PackedScene" uid="uid://cp40cpc6551ks" path="res://player.tscn" id="1_ddsjy"]
+[ext_resource type="PackedScene" uid="uid://c6nqkp4dx722h" path="res://TileMap.tscn" id="2_lh2fi"]
+[ext_resource type="PackedScene" uid="uid://dw0x0mi032x77" path="res://things/iceTileMap.tscn" id="3_5xwsb"]
+[ext_resource type="Texture2D" uid="uid://cmow4w7m2usjk" path="res://Textures/spritesheet.png" id="3_xu1i8"]
+[ext_resource type="PackedScene" uid="uid://d4heidc0aln6n" path="res://things/movement_area.tscn" id="5_oo1yb"]
+[ext_resource type="Script" uid="uid://bbk7s7erowr1t" path="res://area_2d.gd" id="6_resjq"]
+[ext_resource type="PackedScene" uid="uid://bcn8n5dno72xi" path="res://things/Carrot.tscn" id="8_5gr5q"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ev0v"]
+texture = ExtResource("3_xu1i8")
+margins = Vector2i(1, 1)
+separation = Vector2i(2, 0)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_b1ss6"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 255
+sources/1 = SubResource("TileSetAtlasSource_6ev0v")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_biisx"]
+texture = ExtResource("3_xu1i8")
+margins = Vector2i(1, 1)
+separation = Vector2i(2, 0)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q4bq1"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_biisx")
+
+[node name="level" type="Node2D"]
+
+[node name="Tilemaps" type="Node2D" parent="."]
+
+[node name="TileMap" parent="Tilemaps" instance=ExtResource("2_lh2fi")]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD8/wMAAAACAAEAAAD9/wMAAAACAAEAAAD+/wMAAAACAAEAAAD//wMAAAACAAEAAAAAAAMAAAACAAEAAAABAAMAAAACAAEAAAACAAMAAAACAAEAAAADAAMAAAACAAEAAAAEAAMAAAACAAEAAAAFAAMAAAACAAEAAAAGAAMAAAACAAEAAAAHAAMAAAACAAEAAAAIAAMAAAACAAEAAAAJAAMAAAACAAEAAAAKAAMAAAACAAEAAAALAAMAAAACAAEAAAAMAAMAAAACAAEAAAANAAMAAAACAAEAAAAOAAMAAAACAAEAAAAPAAMAAAACAAEAAAAQAAMAAAACAAEAAAA=")
+
+[node name="Fruit" type="TileMapLayer" parent="Tilemaps"]
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_b1ss6")
+rendering_quadrant_size = 32
+
+[node name="fruitBG" type="TileMapLayer" parent="Tilemaps"]
+modulate = Color(0.237539, 0.237539, 0.237539, 1)
+z_index = -1
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_q4bq1")
+
+[node name="Ice" parent="Tilemaps" instance=ExtResource("3_5xwsb")]
+position = Vector2(0, -4)
+tile_map_data = PackedByteArray("AAD//wcAAQAAAAAAAQAAAAcAAQAAAAAAAQABAAcAAQAAAAAAAQACAAcAAQAAAAAAAQADAAcAAQAAAAAAAQAEAAcAAQAAAAAAAQAFAAcAAQAAAAAAAQAGAAcAAQAAAAAAAQAHAAcAAQAAAAAAAQAIAAcAAQAAAAAAAQAJAAcAAQAAAAAAAQAKAAcAAQAAAAAAAQALAAcAAQAAAAAAAQAMAAcAAQAAAAAAAQD9/wMAAQAAAAAAAQD+/wMAAQAAAAAAAQD//wMAAQAAAAAAAQAAAAMAAQAAAAAAAQABAAMAAQAAAAAAAQACAAMAAQAAAAAAAQADAAMAAQAAAAAAAQAEAAMAAQAAAAAAAQAFAAMAAQAAAAAAAQA=")
+
+[node name="Spawn" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_ddsjy")]
+unique_name_in_owner = true
+level = "res://Level3.tscn"
+leveltxt = "LEVEL 3: Springs and Ladders"
+
+[node name="movementArea" parent="." instance=ExtResource("5_oo1yb")]
+visible = false
+position = Vector2(105, -682)
+
+[node name="teleport" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(399, -2832)
+script = ExtResource("6_resjq")
+level = "res://ending/theend.tscn"
+
+[node name="Ladder" type="Area2D" parent="."]
+
+[node name="pillows" type="Area2D" parent="."]
+
+[node name="Carrot" parent="." instance=ExtResource("8_5gr5q")]
+
+[node name="Springs" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="teleport" to="teleport" method="_on_area_entered"]
+[connection signal="body_entered" from="teleport" to="teleport" method="_on_body_entered"]
+[connection signal="body_entered" from="Ladder" to="Player" method="_on_ladder_body_entered"]
+[connection signal="body_exited" from="Ladder" to="Player" method="_on_ladder_body_exited"]
+[connection signal="body_entered" from="pillows" to="Player" method="_on_pillows_body_entered"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw0x0mi032x77"]
+
+[ext_resource type="PackedScene" uid="uid://c8rrok3uk2w5v" path="res://things/dontuse/ice.tscn" id="2_m2l2d"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ju4vb"]
+scenes/1/scene = ExtResource("2_m2l2d")
+
+[sub_resource type="TileSet" id="TileSet_8m4l5"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetScenesCollectionSource_ju4vb")
+
+[node name="Ice" type="TileMapLayer"]
+tile_set = SubResource("TileSet_8m4l5")
