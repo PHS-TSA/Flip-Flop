@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcn8n5dno72xi"]
+
+[ext_resource type="Script" uid="uid://cefun6tnh0e6e" path="res://Scripts/Carrot.gd" id="1_qocg6"]
+[ext_resource type="Texture2D" uid="uid://d3kfg2xlkdco" path="res://Textures/Carrot/Cacarot.png" id="2_l8iou"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_25gdl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l8iou")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Carrot" type="Node2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_qocg6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_25gdl")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-51, 53, 53, 4, 52, -51, -4, -51)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_carrot_collected"]

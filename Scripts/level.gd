@@ -9,14 +9,14 @@ func _ready() -> void:
 		get_node("Label4").visible = false
 		get_node("Label5").visible = false
 		get_node("Label7").visible = true
-		get_node("Label").txt = "WASD to move!"
+		get_node("Label").text = "WASD to move!"
 	else:
 		get_node("Label2").visible = true
 		get_node("Label3").visible = true
 		get_node("Label4").visible = true
 		get_node("Label5").visible = true
 		get_node("Label7").visible = false
-		get_node("Label").txt = "WASD to move in fruit section!"
+		get_node("Label").text = "WASD to move in fruit section!"
 
 		
 

@@ -17,6 +17,7 @@ var stamina = 100
 var secretstamina = 100
 var pausedclimb = true
 var sleepy = false
+var carrotcolected = false
 
 var onladder = false
 

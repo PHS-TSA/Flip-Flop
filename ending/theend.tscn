@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://fl3exisrhitj"]
+[gd_scene load_steps=12 format=3 uid="uid://fl3exisrhitj"]
 
 [ext_resource type="Texture2D" uid="uid://cimwukqriw66t" path="res://ending/bleg (1).png" id="1_cp0sh"]
+[ext_resource type="Script" uid="uid://ujy3qsgundwl" path="res://ending/theend.gd" id="1_n35ro"]
 [ext_resource type="Texture2D" uid="uid://e3doymdlj15s" path="res://ending/ezgif-7cebf3f0a1cd15.webp" id="2_wcthk"]
 [ext_resource type="Texture2D" uid="uid://8s1qdgdp4sqy" path="res://ending/ezgif-7934369ef78719.webp" id="3_0vif0"]
 [ext_resource type="Texture2D" uid="uid://sc4reo03ke1y" path="res://ending/7f6ea4f5934c620cd695fdf6280c2f5d.jpg" id="4_rs1wt"]
@@ -19,6 +20,9 @@ font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_refq8"]
 font_size = 40
 
+[sub_resource type="LabelSettings" id="LabelSettings_xefwt"]
+font_size = 80
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -26,6 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n35ro")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -177,3 +182,13 @@ label_settings = SubResource("LabelSettings_refq8")
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(0.65, 0.65)
+
+[node name="Carrots" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 80.0
+offset_top = 102.0
+offset_right = 592.0
+offset_bottom = 212.0
+text = "Carrots: 0 / 3 "
+label_settings = SubResource("LabelSettings_xefwt")
