@@ -19,7 +19,9 @@ var pausedclimb = true
 var sleepy = false
 var carrotcolected = false
 
-var onice = false
+var onice = 0
+var jumpedonice = false
+
 var onladder = false
 
 func _ready() -> void:
@@ -46,7 +48,6 @@ func _input(event):
 		slept.emit()
 		
 func _physics_process(delta: float) -> void:
-	onice = Globals.onice
 	if not sleepy:
 		# Add the gravity.
 		if wasdOrArrows:
@@ -68,6 +69,9 @@ func _physics_process(delta: float) -> void:
 			if wasdOrArrows:
 				if is_on_floor() and not grabbing:
 					jumping = false
+					if jumpedonice == true:
+						onice -= 1
+						jumpedonice = false
 					
 				if is_on_floor() and not is_on_wall() and not walking and not jumping and not grabbing:
 					%Sprite.play("idle")
@@ -82,7 +86,13 @@ func _physics_process(delta: float) -> void:
 					grabbing = false
 					
 				if Input.is_action_just_pressed("w") and (is_on_floor() or grabbing) and not (onladder and Input.is_action_pressed("wasdgrab")):
-					velocity.y = JUMP_VELOCITY
+					if onice == 0:
+						velocity.y = JUMP_VELOCITY
+					else:
+						velocity.y = JUMP_VELOCITY
+						onice += 1
+						jumpedonice = true
+						
 					if not grabbing:
 						%Sprite.play("jump")
 						jumping = true
@@ -109,15 +119,18 @@ func _physics_process(delta: float) -> void:
 						%Sprite.flip_h = false
 
 				if direction and not(walljump):
-					velocity.x = direction * speed
+					if onice == 0:
+						velocity.x = direction * speed
+					else:
+						velocity.x = move_toward(velocity.x, direction * (speed * 2), speed/40)
 					if not jumping and not grabbing and not onladder:
 						%Sprite.play("walk")
 					walking = true
 				elif not walljump:
-					if not onice:
+					if onice == 0:
 						velocity.x = move_toward(velocity.x, 0, speed/3)
 					else:
-						velocity.x = move_toward(velocity.x, 0, speed/999)
+						velocity.x = move_toward(velocity.x, 0, speed/80)
 					walking = false
 				
 				if onladder and Input.is_action_pressed("wasdgrab"):
@@ -149,6 +162,9 @@ func _physics_process(delta: float) -> void:
 				
 				if is_on_floor() and not grabbing:
 					jumping = false
+					if jumpedonice == true:
+						onice -= 1
+						jumpedonice = false
 					
 				if is_on_floor() and not is_on_wall() and not walking and not jumping and not grabbing:
 					%Sprite.play("idle")
@@ -163,7 +179,12 @@ func _physics_process(delta: float) -> void:
 					grabbing = false
 					
 				if Input.is_action_just_pressed("up") and (is_on_floor() or grabbing) and not (onladder and Input.is_action_pressed("arrowsgrab")):
-					velocity.y = JUMP_VELOCITY
+					if onice == 0:
+						velocity.y = JUMP_VELOCITY
+					else:
+						velocity.y = JUMP_VELOCITY
+						onice += 1
+						jumpedonice = true
 					
 					if not grabbing:
 						%Sprite.play("jump")
@@ -191,15 +212,18 @@ func _physics_process(delta: float) -> void:
 						%Sprite.flip_h = false
 
 				if direction and not(walljump):
-					velocity.x = direction * speed
+					if onice == 0:
+						velocity.x = direction * speed
+					else:
+						velocity.x = move_toward(velocity.x, direction * (speed * 2), speed/40)
 					if not jumping and not grabbing and not onladder:
 						%Sprite.play("walk")
 					walking = true
 				elif not walljump:
-					if not onice:
+					if onice == 0:
 						velocity.x = move_toward(velocity.x, 0, speed/3)
 					else:
-						velocity.x = move_toward(velocity.x, 0, speed/9)
+						velocity.x = move_toward(velocity.x, 0, speed/80)
 					walking = false
 					
 				if onladder and Input.is_action_pressed("arrowsgrab"):

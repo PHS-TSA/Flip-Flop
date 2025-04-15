@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b2c8j1ek3d1i" path="res://Scripts/ice.gd" id="2_w8q8g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wc2py"]
-size = Vector2(64, 4)
+size = Vector2(68, 4)
 
 [node name="Sprite2D" type="Sprite2D"]
 texture = ExtResource("1_ynw07")
@@ -16,5 +16,5 @@ script = ExtResource("2_w8q8g")
 position = Vector2(0, -34)
 shape = SubResource("RectangleShape2D_wc2py")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_slip"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_slip_exit"]
