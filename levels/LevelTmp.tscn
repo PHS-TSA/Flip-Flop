@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dvs6qoprore6b"]
+[gd_scene load_steps=13 format=4 uid="uid://dvs6qoprore6b"]
 
 [ext_resource type="PackedScene" uid="uid://cp40cpc6551ks" path="res://player.tscn" id="1_ddsjy"]
 [ext_resource type="PackedScene" uid="uid://c6nqkp4dx722h" path="res://TileMap.tscn" id="2_lh2fi"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d4heidc0aln6n" path="res://things/movement_area.tscn" id="5_oo1yb"]
 [ext_resource type="Script" uid="uid://bbk7s7erowr1t" path="res://area_2d.gd" id="6_resjq"]
 [ext_resource type="PackedScene" uid="uid://bcn8n5dno72xi" path="res://things/Carrot.tscn" id="8_5gr5q"]
+[ext_resource type="PackedScene" uid="uid://cr2ajsqmcprw0" path="res://things/fan.tscn" id="8_ddsjy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ev0v"]
 texture = ExtResource("3_xu1i8")
@@ -104,6 +105,13 @@ level = "res://ending/theend.tscn"
 [node name="Carrot" parent="." instance=ExtResource("8_5gr5q")]
 
 [node name="Springs" type="Node2D" parent="."]
+
+[node name="Fan" parent="." instance=ExtResource("8_ddsjy")]
+position = Vector2(-408, 177)
+
+[node name="Fan2" parent="." instance=ExtResource("8_ddsjy")]
+position = Vector2(424, 170)
+rotation = 0.785398
 
 [connection signal="area_entered" from="teleport" to="teleport" method="_on_area_entered"]
 [connection signal="body_entered" from="teleport" to="teleport" method="_on_body_entered"]

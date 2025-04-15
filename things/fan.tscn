@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://cr2ajsqmcprw0"]
+
+[ext_resource type="Script" uid="uid://fyxx5u8w7oe3" path="res://Scripts/fan.gd" id="1_rnfig"]
+[ext_resource type="Texture2D" uid="uid://0kkyk13hpn1e" path="res://Textures/fan/air/New Piskel (12).png" id="2_w1jg7"]
+[ext_resource type="Texture2D" uid="uid://c6vlereyqko81" path="res://Textures/fan/fanCase/New Piskel (11).png" id="3_fhjiq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8c1ac"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w1jg7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hks7d"]
+size = Vector2(128, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1t58u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fhjiq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mf4c"]
+size = Vector2(64, 32)
+
+[node name="Fan" type="Node2D"]
+script = ExtResource("1_rnfig")
+
+[node name="Air" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -160)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8c1ac")
+
+[node name="Area2D" type="Area2D" parent="Air"]
+position = Vector2(0, 286)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Air/Area2D"]
+position = Vector2(0, -286)
+shape = SubResource("RectangleShape2D_hks7d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="FanCasing" type="AnimatedSprite2D" parent="StaticBody2D"]
+position = Vector2(0, -16)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_1t58u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_8mf4c")
+
+[connection signal="body_entered" from="Air/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Air/Area2D" to="." method="_on_area_2d_body_exited"]
